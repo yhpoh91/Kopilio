@@ -6,26 +6,30 @@ class CardContainer extends HTMLElement {
     // write element functionality in here
   }
 
-  createAddColumnButton() {
-    const button = document.createElement('button');
-    button.innerText = "Add a column"
-
-    return button;
+  handleOnAddColumn(columnName) {
+    alert(columnName);
   }
 
   createInitialColumn() {
     const column = document.createElement('container-column');
-    const addColumnButton = this.createAddColumnButton();
+    const columnAdder = document.createElement('column-adder');
+    columnAdder.onAddColumn = columnName => this.handleOnAddColumn(columnName);
 
-    column.appendChild(addColumnButton);
+    column.appendChild(columnAdder);
     this.appendChild(column);
   }
 
-  createColumn() {
+  createDataColumn() {
+    const column = document.createElement('container-column');
   }
 
   connectedCallback() {
     this.className = "kp-card-container-root";
+    this.createInitialColumn();
+    this.createInitialColumn();
+    this.createInitialColumn();
+    this.createInitialColumn();
+    this.createInitialColumn();
     this.createInitialColumn();
   }
 }
