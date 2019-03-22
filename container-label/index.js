@@ -8,7 +8,7 @@ class ContainerLabel extends HTMLElement {
   
     connectedCallback() {
       this.className = "kp-container-label-root";
-      this.innerHTML = `Add column`;
+      this.innerHTML = `Koplio`;
     }
   }
   
