@@ -1,0 +1,13 @@
+.kp-container-column-root {
+    font-family: Lato;
+    font-size: 18px;  
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+    max-width: 100%;
+    width: 250px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+  }
