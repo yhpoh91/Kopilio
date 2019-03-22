@@ -1,0 +1,13 @@
+.kp-card-item-root {
+  width: 100%;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.kp-card-item-root:hover {
+  background-color: #c6c6c6;
+}
+
+.kp-card-item-root:active {
+  background-color: #767676;
+}
