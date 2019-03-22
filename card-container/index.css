@@ -1,0 +1,23 @@
+.kp-card-container-root {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c6c6c6;
+  border-radius: 4px;
+}
