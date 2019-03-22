@@ -7,6 +7,15 @@
   border-width: 0.5px;
   border-radius: 4px;
   background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+.kp-column-adder-root:hover {
+  background-color: #c6c6c6;
+}
+
+.kp-column-adder-root:active {
+  background-color: #767676;
 }
 
 .kp-column-adder-label {
@@ -14,6 +23,10 @@
   width: 100%;
   font-size: 14px;
   color: #767676;
+}
+
+.kp-column-adder-label:active {
+  color: #ffffff;
 }
 
 .kp-column-adder-textbox {
