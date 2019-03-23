@@ -1,9 +1,8 @@
-const createUrl = (columnId, cardId) =>
-  `http://localhost:3000/columns/${columnId}/cards/${cardId || ""}`;
+const createCardUrl = (columnId, cardId) => `http://localhost:3000/cards/${cardId || ""}?columnId=${columnId}`;
 
-const list = columnId => {
+const listCards = async columnId => {
   try {
-    const url = createUrl(columnId);
+    const url = createCardUrl(columnId);
     const cards = await api.request(api.GET, url);
     return Promise.resolve(cards);
   } catch (error) {
@@ -11,19 +10,19 @@ const list = columnId => {
   }
 };
 
-const create = (columnId, cardData) => {
+const createCard = async (columnId, cardData) => {
   try {
-    const url = createUrl(columnId);
-    const card = await api.request(api.POST, url, cardData);
+    const url = createCardUrl(columnId);
+    const card = await api.request(api.POST, url, { ...cardData, columnId });
     return Promise.resolve(card);
   } catch (error) {
     return Promise.reject(error);
   }
 };
 
-const get = (columnId, cardId) => {
+const getCard = async (columnId, cardId) => {
   try {
-    const url = createUrl(columnId, cardId);
+    const url = createCardUrl(columnId, cardId);
     const card = await api.request(api.GET, url);
     return Promise.resolve(card);
   } catch (error) {
@@ -31,19 +30,19 @@ const get = (columnId, cardId) => {
   }
 };
 
-const update = (columnId, cardId, cardData) => {
+const updateCard = async (columnId, cardId, cardData) => {
   try {
-    const url = createUrl(columnId, cardId);
-    const card = await api.request(api.PUT, url, cardData);
+    const url = createCardUrl(columnId, cardId);
+    const card = await api.request(api.PUT, url, { ...cardData, columnId });
     return Promise.resolve(card);
   } catch (error) {
     return Promise.reject(error);
   }
 };
 
-const remove = (columnId, cardId) => {
+const removeCard = async (columnId, cardId) => {
   try {
-    const url = createUrl(columnId, cardId);
+    const url = createCardUrl(columnId, cardId);
     await api.request(api.DELETE, url);
     return Promise.resolve();
   } catch (error) {
@@ -51,10 +50,10 @@ const remove = (columnId, cardId) => {
   }
 };
 
-columnService = {
-  list,
-  create,
-  get,
-  update,
-  remove
+cardService = {
+  listCards,
+  createCard,
+  getCard,
+  updateCard,
+  removeCard
 };
