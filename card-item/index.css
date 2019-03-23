@@ -17,7 +17,7 @@
   font-weight: 400;
 }
 
-.kp-card-item-adder-textbox {
+.kp-card-item-textbox-title {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,9 +25,22 @@
   min-height: 32px;
   margin-top: 8px;
   margin-bottom: 8px;
+  border-color: #c6c6c6;
 }
 
-.kp-card-item-adder-save-button {
+.kp-card-item-textarea-description {
+  display: flex;
+  resize: vertical;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 64px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-color: #c6c6c6;
+}
+
+.kp-card-item-save-button {
   display: flex;
   flex-direction: row;
   align-items: center;

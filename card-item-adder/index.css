@@ -16,3 +16,23 @@
     font-size: 14px;
     font-weight: 400;
   }
+
+  .kp-card-item-adder-textbox-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 32px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .kp-card-item-adder-save-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }

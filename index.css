@@ -17,7 +17,7 @@ body {
   flex-direction: column;
 }
 
-div, span, form, input {
+div, span, form, input, button, textarea {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

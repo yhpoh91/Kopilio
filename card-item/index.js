@@ -33,28 +33,28 @@ class CardItem extends HTMLElement {
       
       // TextBox (title)
       const titleTextbox = document.createElement('input');
-      titleTextbox.className = "kp-column-adder-textbox";
+      titleTextbox.className = "kp-card-item-adder-textbox-title";
       titleTextbox.type = "text";
       titleTextbox.value = card.title;
       titleTextbox.id = `card-item-title-${card.id}`;
 
       // TextBox (description)
-      const descriptionTextbox = document.createElement('input');
-      descriptionTextbox.className = "kp-column-adder-textbox";
-      descriptionTextbox.type = "text";
-      descriptionTextbox.value = card.description || '';
-      descriptionTextbox.id = `card-item-description-${card.id}`;
+      const descriptionTextArea = document.createElement('textarea');
+      descriptionTextArea.className = "kp-card-item-textarea-description";
+      descriptionTextArea.value = card.description || '';
+      descriptionTextArea.placeholder = "Card description";
+      descriptionTextArea.id = `card-item-description-${card.id}`;
 
       // Save Button
       const saveButton = document.createElement('button');
-      saveButton.className = "kp-column-adder-save-button";
+      saveButton.className = "kp-card-item-save-button";
       saveButton.innerText = "Save";
       saveButton.onclick = (e) => {
         e.cancelBubble = true;
         if (e.stopPropagation) e.stopPropagation();
         
         cardItem.card.title = titleTextbox.value;
-        cardItem.card.description = descriptionTextbox.value;
+        cardItem.card.description = descriptionTextArea.value;
         
         cardItem.expand = false;
         cardItem.handleOnExpandChange();
@@ -68,7 +68,7 @@ class CardItem extends HTMLElement {
       this.onclick = null;
       
       this.appendChild(titleTextbox);
-      this.appendChild(descriptionTextbox)
+      this.appendChild(descriptionTextArea)
       this.appendChild(saveButton);
     }
 
