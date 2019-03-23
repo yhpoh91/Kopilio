@@ -4,7 +4,7 @@ class CardContainer extends HTMLElement {
     super();
 
     // write element functionality in here
-    this.columns = ['test1', 'good morning'];
+    this.columns = [];
 
     this.handleOnAddColumn = this.handleOnAddColumn.bind(this);
   }
