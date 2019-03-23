@@ -16,6 +16,3 @@ window.addEventListener("DOMContentLoaded", () => {
   root.appendChild(container);
 });
 
-api.request(api.GET, "http://localhost:3000/columns/1/cards")
-  .then(xhrData => console.log(xhrData))
-  .catch(error => console.error(error));
