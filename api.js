@@ -1,4 +1,4 @@
-const request = (method, url, body) => {
+const request = (method, url, data) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.onload = () => {
@@ -17,7 +17,10 @@ const request = (method, url, body) => {
     }
 
     xhr.open(method, url);
-    xhr.send(body == null ? undefined : JSON.stringify(body));
+    xhr.setRequestHeader("Content-Type", "application/json");
+    const body = data == null ? undefined : JSON.stringify(data);
+    console.log(body);
+    xhr.send(body);
   })
 }
 
