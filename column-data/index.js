@@ -4,14 +4,20 @@ class ColumnData extends HTMLElement {
       super();
   
       // write element functionality in here
-      this.cards = [];
+      this.columnId = null;
     }
 
     createCardItem(card) {
       const cardItem = document.createElement('card-item');
       cardItem.card = card;
       cardItem.onsave = card => {
-        console.log(card);
+        const data = {
+          title: card.title,
+          description: card.description,
+        };
+        cardService.updateCard(card.columnId, card.id, data)
+          .then(() => console.log('card saved'))
+          .catch(console.error);
       }
 
       return cardItem;
@@ -20,10 +26,16 @@ class ColumnData extends HTMLElement {
     createCardItemAdder(column) {
       const cardItemAdder = document.createElement('card-item-adder');
       cardItemAdder.onadd = card => {
-
-        // TODO: save to database, get real id and description
-        const newCardItem = column.createCardItem(card);
-        column.insertBefore(newCardItem, cardItemAdder);
+        const data = {
+          title: card.title,
+        };
+        cardService.createCard(column.columnId, data)
+          .then(createdCard => {
+            const newCardItem = column.createCardItem(createdCard);
+            column.insertBefore(newCardItem, cardItemAdder);
+            console.log('card added');
+          })
+          .catch(console.error);
       }
 
       return cardItemAdder;
@@ -33,13 +45,20 @@ class ColumnData extends HTMLElement {
       this.className = "kp-column-adder-root";
       this.innerHTML = `<span class="kp-column-data-label">${this.title || 'Untitled Column'}</span>`;
 
-      for (let i = 0; i < this.cards.length; i++) {
-        const cardItem = this.createCardItem(this.cards[i]);
-        this.appendChild(cardItem);
-      }
+      cardService.listCards(this.columnId)
+        .then(cards => {
+          for (let i = 0; i < cards.length; i++) {
+            const cardItem = this.createCardItem(cards[i]);
+            this.appendChild(cardItem);
+          }
+    
+          const cardItemAdder = this.createCardItemAdder(this);
+          this.appendChild(cardItemAdder);
+        })
+        .catch(console.error);
 
-      const cardItemAdder = this.createCardItemAdder(this);
-      this.appendChild(cardItemAdder);
+
+      
     }
   }
   
