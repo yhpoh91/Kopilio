@@ -10,12 +10,20 @@ class CardContainer extends HTMLElement {
   }
 
   handleOnAddColumn(columnName, currentColumn) {
-    const dataColumn = this.createDataColumn(columnName);
     const newAdderColumn = this.createAdderColumn();
 
-    this.removeChild(currentColumn);
-    this.appendChild(dataColumn);
-    this.appendChild(newAdderColumn);
+    const data = {
+      title: columnName,
+      cards: [],
+    };
+    columnService.create(data)
+      .then(column => {
+        const dataColumn = this.createDataColumn(column);
+        this.removeChild(currentColumn);
+        this.appendChild(dataColumn);
+        this.appendChild(newAdderColumn);
+      })
+      .catch(console.error);
   }
 
   createAdderColumn() {
@@ -30,23 +38,32 @@ class CardContainer extends HTMLElement {
   createDataColumn(data) {
     const column = document.createElement('container-column');
     const columnData = document.createElement('column-data');
-    columnData.title = data
+    columnData.title = data.title;
+    columnData.cards = data.cards;
     column.appendChild(columnData);
     return column;
   }
 
   connectedCallback() {
     this.className = "kp-card-container-root";
-    
-    // Data Column
-    for (let i = 0; i < this.columns.length; i++) {
-      const dataColumn = this.createDataColumn(this.columns[i]);
-      this.appendChild(dataColumn);
-    }
 
-    // Adder Column
-    const adderColumn = this.createAdderColumn();
-    this.appendChild(adderColumn);
+    columnService.list()
+      .then(columns => {
+        console.log(columns)
+        // Data Column
+        this.columns = columns;
+        for (let i = 0; i < this.columns.length; i++) {
+          const dataColumn = this.createDataColumn(this.columns[i]);
+          this.appendChild(dataColumn);
+        }
+
+        // Adder Column
+        const adderColumn = this.createAdderColumn();
+        this.appendChild(adderColumn);
+      })
+      .catch(console.error);
+    
+    
   }
 }
 
