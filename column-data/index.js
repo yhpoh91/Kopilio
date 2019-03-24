@@ -43,7 +43,18 @@ class ColumnData extends HTMLElement {
   
     connectedCallback() {
       this.className = "kp-column-adder-root";
-      this.innerHTML = `<span class="kp-column-data-label">${this.title || 'Untitled Column'}</span>`;
+      const column = this;
+
+      const dataTitle = document.createElement('column-data-title');
+      dataTitle.title = this.title || 'Untitled Column';
+      dataTitle.onTitleChange = title => {
+        columnService.updateColumn(column.columnId, {
+          title,
+        })
+          .then(updatedColumn => console.log(updatedColumn))
+          .catch(console.error);
+      }
+      this.appendChild(dataTitle);
 
       cardService.listCards(this.columnId)
         .then(cards => {
