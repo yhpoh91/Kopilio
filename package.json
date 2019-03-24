@@ -1,0 +1,15 @@
+{
+  "name": "kopilio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run open && npm run startServer",
+    "open": "open index.html",
+    "serve": "npx -p local-web-server ws",
+    "startServer": "npx json-server --host 0.0.0.0 --watch db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Poh Yee Hui",
+  "license": "ISC"
+}

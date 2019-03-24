@@ -1,0 +1,13 @@
+.kp-column-data-title-root {
+  display: flex;
+}
+
+.kp-column-data-title-label {
+  width: 100%;
+  font-size: 14px;
+  color: #767676;
+}
+
+.kp-column-data-title-editable {
+  width: 100%;
+}

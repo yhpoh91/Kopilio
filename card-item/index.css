@@ -1,0 +1,64 @@
+.kp-card-item-root {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+  background-color: #ffffff;
+  cursor: pointer;
+  border: 1;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.kp-card-item-label {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.kp-card-item-textbox-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-height: 32px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-color: #c6c6c6;
+}
+
+.kp-card-item-textarea-description {
+  display: flex;
+  resize: vertical;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 64px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-color: #c6c6c6;
+}
+
+.kp-card-item-save-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.kp-card-item-delete-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-width: 0px;
+  background-color: transparent;
+  color: maroon;
+}
