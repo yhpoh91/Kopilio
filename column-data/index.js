@@ -28,7 +28,7 @@ class ColumnData extends HTMLElement {
           title: card.title,
           description: card.description,
         };
-        cardService.updateCard(card.columnId, card.id, data)
+        cardService.updateCard(card.columnId, card.columnId, card.id, data)
           .then(() => console.log('card saved'))
           .catch(console.error);
       }
@@ -123,6 +123,12 @@ class ColumnData extends HTMLElement {
 
             // Add to new parent
             target.insertBefore(kpDraggedCard, cardItemAdder);
+
+            // Update card
+            const card = kpDraggedCard.card;
+            cardService.updateCard(card.columnId, target.columnId, card.id, card)
+              .then(() => console.log('card moved'))
+              .catch(console.error);
           }
         })
         .catch(console.error);

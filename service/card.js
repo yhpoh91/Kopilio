@@ -30,10 +30,10 @@ const getCard = async (columnId, cardId) => {
   }
 };
 
-const updateCard = async (columnId, cardId, cardData) => {
+const updateCard = async (oldColumnId, newColumnId, cardId, cardData) => {
   try {
-    const url = createCardUrl(columnId, cardId);
-    const card = await api.request(api.PUT, url, { ...cardData, columnId });
+    const url = createCardUrl(oldColumnId, cardId);
+    const card = await api.request(api.PUT, url, { ...cardData, columnId: newColumnId });
     return Promise.resolve(card);
   } catch (error) {
     return Promise.reject(error);
