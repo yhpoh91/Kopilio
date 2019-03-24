@@ -18,5 +18,11 @@ window.addEventListener("DOMContentLoaded", () => {
   // Add Container
   const container = document.createElement("card-container");
   root.appendChild(container);
+
+
+  // Set Searchbar event
+  searchbar.onSearchText = text => {
+    container.search(text);
+  }
 });
 

@@ -14,6 +14,31 @@ class CardItem extends HTMLElement {
     };
   }
 
+  searchOk(text) {
+    // Check for empty (default behaviour: show all)
+    if (text == null || text === '') {
+      return true;
+    }
+
+    // Check with lower case (case-insensitive)
+    const lowerText = text ? text.toLowerCase() : '';
+    const lowerTitle = this.card.title ? this.card.title.toLowerCase() : '';
+    const lowerDescription = this.card.description ? this.card.description.toLowerCase() : '';
+
+    // Check title
+    if (lowerTitle.indexOf(lowerText) > -1) {
+      return true;
+    }
+
+    // Check description
+    if (lowerDescription.indexOf(lowerText) > -1) {
+      return true;
+    }
+
+    // Unable to find
+    return false;
+  }
+
   handleOnExpandChange() {
     // Changing of state will is done somewhere else
     // This is merely to reflect the state

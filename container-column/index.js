@@ -5,6 +5,14 @@ class ContainerColumn extends HTMLElement {
   
       // write element functionality in here
     }
+
+    search(text) {
+      for (let i = 0; i < this.children.length; i++) {
+        if (this.children[i].search) {
+          this.children[i].search(text);
+        }
+      }
+    }
   
     connectedCallback() {
       this.className = "kp-container-column-root";

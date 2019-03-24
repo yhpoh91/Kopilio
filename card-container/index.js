@@ -53,6 +53,14 @@ class CardContainer extends HTMLElement {
     return column;
   }
 
+  search(text) {
+    for (let i = 0; i < this.children.length; i++) {
+      if (this.children[i].search) {
+        this.children[i].search(text);
+      }
+    }
+  }
+
   connectedCallback() {
     this.className = "kp-card-container-root";
     const container = this;
