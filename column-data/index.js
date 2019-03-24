@@ -7,7 +7,7 @@ class ColumnData extends HTMLElement {
       this.columnId = null;
     }
 
-    createCardItem(card) {
+    createCardItem(card, column) {
       const cardItem = document.createElement('card-item');
       cardItem.card = card;
       cardItem.onsave = card => {
@@ -17,6 +17,14 @@ class ColumnData extends HTMLElement {
         };
         cardService.updateCard(card.columnId, card.id, data)
           .then(() => console.log('card saved'))
+          .catch(console.error);
+      }
+      cardItem.ondelete = card => {
+        cardService.removeCard(card.columnId, card.id)
+          .then(() => {
+            console.log('card deleted');
+            column.removeChild(cardItem);
+          })
           .catch(console.error);
       }
 
@@ -59,7 +67,7 @@ class ColumnData extends HTMLElement {
       cardService.listCards(this.columnId)
         .then(cards => {
           for (let i = 0; i < cards.length; i++) {
-            const cardItem = this.createCardItem(cards[i]);
+            const cardItem = this.createCardItem(cards[i], column);
             this.appendChild(cardItem);
           }
     

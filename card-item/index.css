@@ -49,3 +49,16 @@
   margin-top: 8px;
   margin-bottom: 8px;
 }
+
+.kp-card-item-delete-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-width: 0px;
+  background-color: transparent;
+  color: maroon;
+}
