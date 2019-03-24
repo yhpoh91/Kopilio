@@ -1,4 +1,4 @@
-const createCardUrl = (columnId, cardId) => `http://localhost:3000/cards/${cardId || ""}?columnId=${columnId}`;
+const createCardUrl = (columnId, cardId) => `${kpApiHost}/cards/${cardId || ""}?columnId=${columnId}`;
 
 const listCards = async columnId => {
   try {

@@ -27,3 +27,4 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 kpDraggedCard = null;
+kpApiHost = 'http://localhost:3000'

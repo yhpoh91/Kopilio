@@ -1,4 +1,4 @@
-const createColumnUrl = columnId => `http://localhost:3000/columns/${columnId || ""}`;
+const createColumnUrl = columnId => `${kpApiHost}/columns/${columnId || ""}`;
 
 const listColumns = async () => {
   try {
