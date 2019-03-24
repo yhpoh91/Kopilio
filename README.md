@@ -7,6 +7,7 @@ See [Installation](#Installation) for more information.
 
 # Installation
 To start the server, run `npm start` in your terminal console.
+*Note:* Modify `host.js` to point to your API server if it is not running on `http://localhost:3000`
 
 It will open the `index.html` file on your default browser, and start the `json-server` API server.
 Starting the server might take some time as it is scripted to use `npx` to download and run immediately so there will be some download time involved.
