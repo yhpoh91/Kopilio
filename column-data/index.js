@@ -53,6 +53,7 @@ class ColumnData extends HTMLElement {
       this.className = "kp-column-adder-root";
       const column = this;
 
+      // Title
       const dataTitle = document.createElement('column-data-title');
       dataTitle.title = this.title || 'Untitled Column';
       dataTitle.onTitleChange = title => {
@@ -64,18 +65,36 @@ class ColumnData extends HTMLElement {
       }
       this.appendChild(dataTitle);
 
+      // Delete Button
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "kp-column-data-delete-button";
+      deleteButton.innerText = "Delete this column";
+      deleteButton.onclick = e => {
+        e.cancelBubble = true;
+        if (e.stopPropagation) e.stopPropagation();
+
+        const confirmDelete = window.confirm("Are you sure you want to delete this column?");
+        if (confirmDelete) {
+          // Trigger OnDelete Callback
+          if (column.ondelete) {
+            column.ondelete();
+          }
+        }
+      }
+      this.appendChild(deleteButton);
+
+      // Cards
       cardService.listCards(this.columnId)
         .then(cards => {
           for (let i = 0; i < cards.length; i++) {
             const cardItem = this.createCardItem(cards[i], column);
-            this.appendChild(cardItem);
+            this.insertBefore(cardItem, deleteButton);
           }
     
           const cardItemAdder = this.createCardItemAdder(this);
-          this.appendChild(cardItemAdder);
+          this.insertBefore(cardItemAdder, deleteButton);
         })
         .catch(console.error);
-
 
       
     }

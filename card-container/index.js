@@ -35,18 +35,27 @@ class CardContainer extends HTMLElement {
     return column;
   }
 
-  createDataColumn(data) {
+  createDataColumn(data, container) {
     const column = document.createElement('container-column');
     const columnData = document.createElement('column-data');
     columnData.title = data.title;
     columnData.columnId = data.id;
     columnData.cards = data.cards;
+    columnData.ondelete = () => {
+      columnService.removeColumn(columnData.columnId)
+        .then(() => {
+          console.log('Column deleted');
+          container.removeChild(column);
+        })
+        .catch(console.error);
+    }
     column.appendChild(columnData);
     return column;
   }
 
   connectedCallback() {
     this.className = "kp-card-container-root";
+    const container = this;
 
     columnService.listColumns()
       .then(columns => {
@@ -54,7 +63,7 @@ class CardContainer extends HTMLElement {
         // Data Column
         this.columns = columns;
         for (let i = 0; i < this.columns.length; i++) {
-          const dataColumn = this.createDataColumn(this.columns[i]);
+          const dataColumn = this.createDataColumn(this.columns[i], container);
           this.appendChild(dataColumn);
         }
 
