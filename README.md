@@ -6,8 +6,17 @@ Some scripts are added to `package.json` to allow easy starting and running the 
 See [Installation](#Installation) for more information.
 
 # Installation
+
+##### Basic Start
 To start the server, run `npm start` in your terminal console.
+
+##### Serve on Network (with Web Server)
+To serve the server on your machine, listening to `0.0.0.0`, port `8000`, run `npm run serve` in your terminal console.
 *Note:* Modify `host.js` to point to your API server if it is not running on `http://localhost:3000`
+
+##### API Server on Network
+To serve the `json-server` over network, run `npm run startServer` in your terminal console.
+
 
 It will open the `index.html` file on your default browser, and start the `json-server` API server.
 Starting the server might take some time as it is scripted to use `npx` to download and run immediately so there will be some download time involved.
