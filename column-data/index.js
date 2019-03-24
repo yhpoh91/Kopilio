@@ -52,7 +52,7 @@ class ColumnData extends HTMLElement {
         };
         cardService.createCard(column.columnId, data)
           .then(createdCard => {
-            const newCardItem = column.createCardItem(createdCard);
+            const newCardItem = column.createCardItem(createdCard, column);
             column.insertBefore(newCardItem, cardItemAdder);
             console.log('card added');
           })

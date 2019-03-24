@@ -9,8 +9,8 @@ class CardContainer extends HTMLElement {
     this.handleOnAddColumn = this.handleOnAddColumn.bind(this);
   }
 
-  handleOnAddColumn(columnName, currentColumn) {
-    const newAdderColumn = this.createAdderColumn();
+  handleOnAddColumn(columnName, currentColumn, container) {
+    const newAdderColumn = this.createAdderColumn(container);
 
     const data = {
       title: columnName,
@@ -18,7 +18,8 @@ class CardContainer extends HTMLElement {
     };
     columnService.createColumn(data)
       .then(column => {
-        const dataColumn = this.createDataColumn(column);
+        console.log(column)
+        const dataColumn = this.createDataColumn(column, container);
         this.removeChild(currentColumn);
         this.appendChild(dataColumn);
         this.appendChild(newAdderColumn);
@@ -26,10 +27,10 @@ class CardContainer extends HTMLElement {
       .catch(console.error);
   }
 
-  createAdderColumn() {
+  createAdderColumn(container) {
     const column = document.createElement('container-column');
     const columnAdder = document.createElement('column-adder');
-    columnAdder.onAddColumn = columnName => this.handleOnAddColumn(columnName, column);
+    columnAdder.onAddColumn = columnName => this.handleOnAddColumn(columnName, column, container);
 
     column.appendChild(columnAdder);
     return column;
@@ -76,7 +77,7 @@ class CardContainer extends HTMLElement {
         }
 
         // Adder Column
-        const adderColumn = this.createAdderColumn();
+        const adderColumn = this.createAdderColumn(container);
         this.appendChild(adderColumn);
       })
       .catch(console.error);
