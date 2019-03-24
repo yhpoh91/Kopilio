@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "npm run open && npm run startServer",
+    "start": "npm run startMac",
+    "startMac": "npm run open && npm run startServer",
+    "startWindows": "start index.html && npm run startServer",
+    "startLinux": "xdg-open index.html && npm run startServer",
     "open": "open index.html",
     "serve": "npx -p local-web-server ws",
     "startServer": "npx json-server --host 0.0.0.0 --watch db.json",

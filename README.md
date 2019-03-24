@@ -8,7 +8,13 @@ See [Installation](#Installation) for more information.
 # Installation
 
 ##### Basic Start
-To start the server, run `npm start` in your terminal console.
+To start the server on a Mac, run `npm start` in your terminal console.
+
+For other Operating Systems, see below:
+
+- Mac: `npm run startMac`
+- Windows: `npm run startWindows`
+- Linux: `npm run startLinux`
 
 ##### Serve on Network (with Web Server)
 To serve the server on your machine, listening to `0.0.0.0`, port `8000`, run `npm run serve` in your terminal console.
