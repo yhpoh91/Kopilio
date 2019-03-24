@@ -106,10 +106,27 @@ class ColumnData extends HTMLElement {
     
           const cardItemAdder = this.createCardItemAdder(this);
           this.insertBefore(cardItemAdder, deleteButton);
+
+          // Drag Drop
+          this.ondragover = e => e.preventDefault();
+          this.ondrop = e => {
+            e.preventDefault();
+
+            // Find the proper drop zone (data column), up the hierarchy
+            let target = e.target;
+            while (target != null && target.className !== "kp-column-adder-root") {
+              target = target.parentNode;
+            }
+
+            // Remove from previous parent
+            kpDraggedCard.parentNode.removeChild(kpDraggedCard);
+
+            // Add to new parent
+            target.insertBefore(kpDraggedCard, cardItemAdder);
+          }
         })
         .catch(console.error);
 
-      
     }
   }
   

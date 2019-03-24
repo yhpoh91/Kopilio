@@ -128,6 +128,8 @@ class CardItem extends HTMLElement {
   connectedCallback() {
     this.className = "kp-card-item-root";
     this.expand = false;
+    this.draggable = true;
+    this.ondragstart = () => kpDraggedCard = this;
     this.handleOnExpandChange();
   }
 }
