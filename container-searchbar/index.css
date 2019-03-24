@@ -1,0 +1,17 @@
+.kp-container-searchbar-root {
+  width: 600px;
+  max-width: 100%;
+  margin-bottom: 32px;
+}
+
+.kp-container-searchbar-input {
+  width: 100%;
+  height: 32px;
+  flex-direction: row;
+  align-items: center;
+  border: 1;
+  border-radius: 4px;
+  font-family: Lato;
+  font-size: 14px;
+  color: #767676;
+}

@@ -11,6 +11,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const label = document.createElement("container-label");
   root.appendChild(label);
 
+  // Add Searchbar
+  const searchbar = document.createElement("container-searchbar");
+  root.appendChild(searchbar);
+
   // Add Container
   const container = document.createElement("card-container");
   root.appendChild(container);
