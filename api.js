@@ -19,7 +19,6 @@ const request = (method, url, data) => {
     xhr.open(method, url);
     xhr.setRequestHeader("Content-Type", "application/json");
     const body = data == null ? undefined : JSON.stringify(data);
-    console.log(body);
     xhr.send(body);
   })
 }
