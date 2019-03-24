@@ -17,12 +17,18 @@ body {
   flex-direction: column;
 }
 
-div, span, form, input, button, textarea {
+div, span, form, button, {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+input, textarea {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 table, tr, th, td {
